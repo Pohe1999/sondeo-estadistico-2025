@@ -4,10 +4,11 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const PORT = 5001;
+const PORT = process.env.PORT || 5001; // Usa el puerto asignado por Render si está disponible, o 5001 en desarrollo local
 
-// Conexión a MongoDB Atlas (¡URL expuesta, NO RECOMENDADO PARA PRODUCCIÓN!)
-const mongoURI = 'mongodb+srv://mapogu99:dalila25C@sondeostecamac1.bgs4s.mongodb.net/?retryWrites=true&w=majority'; // ¡REEMPLAZA <db_password> CON TU CONTRASEÑA REAL!
+
+const mongoURI = process.env.MONGO_URI;
+
 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
