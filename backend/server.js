@@ -1,12 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require('dotenv').config(); // Importa dotenv
 
 const app = express();
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 
-// Conexión a MongoDB Atlas (¡URL expuesta, NO RECOMENDADO PARA PRODUCCIÓN!)
-const mongoURI = 'mongodb+srv://mapogu99:dalila25C@sondeostecamac1.bgs4s.mongodb.net/?retryWrites=true&w=majority'; // ¡REEMPLAZA <db_password> CON TU CONTRASEÑA REAL!
+// Conexión a MongoDB Atlas (usando variable de entorno)
+const mongoURI = process.env.MONGODB_URI;
 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
