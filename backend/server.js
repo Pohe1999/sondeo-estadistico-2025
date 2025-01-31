@@ -5,21 +5,23 @@ const cors = require('cors');
 const app = express();
 const PORT = 5001;
 
-// Conexión a MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/sondeo', {
+// Conexión a MongoDB Atlas (¡URL expuesta, NO RECOMENDADO PARA PRODUCCIÓN!)
+const mongoURI = 'mongodb+srv://mapogu99:dalila25C@sondeostecamac1.bgs4s.mongodb.net/?retryWrites=true&w=majority'; // ¡REEMPLAZA <db_password> CON TU CONTRASEÑA REAL!
+
+mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-  .then(() => console.log('Conectado a MongoDB'))
-  .catch((err) => console.error('Error de conexión a MongoDB:', err));
+  .then(() => console.log('Conectado a MongoDB Atlas'))
+  .catch((err) => console.error('Error de conexión a MongoDB Atlas:', err));
 
-// Esquema de Mongoose (¡Aquí está el cambio!)
+// Esquema de Mongoose
 const sondeoSchema = new mongoose.Schema({
   seccionElectoral: String,
   sexo: String,
   edad: Number,
   escolaridad: String,
-  beneficiario: Boolean, // ¡CAMBIADO A String!
+  beneficiario: Boolean,
   programaSocial: String,
   problemaSeguridad: String,
   problemaSeguridadOtro: String,
@@ -47,7 +49,7 @@ const Sondeo = mongoose.model('sondeos', sondeoSchema);
 app.use(cors());
 app.use(express.json());
 
-// Ruta para guardar los datos (sin cambios)
+// Ruta para guardar los datos
 app.post('/api/sondeos', async (req, res) => {
   try {
     const nuevoSondeo = new Sondeo(req.body);
