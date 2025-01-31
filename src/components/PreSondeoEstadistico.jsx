@@ -29,7 +29,7 @@ const PreSondeoEstadistico = () => {
 
       console.log('Datos enviados al servidor:', dataToSend);
 
-      const response = await fetch('http://localhost:5001/api/sondeos', {
+      const response = await fetch('https://pre-sondeo-tecamac-2025.netlify.app/api/sondeos', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
