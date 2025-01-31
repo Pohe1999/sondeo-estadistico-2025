@@ -48,7 +48,12 @@ const sondeoSchema = new mongoose.Schema({
 
 const Sondeo = mongoose.model('sondeos', sondeoSchema);
 
-app.use(cors());
+// Permitir solicitudes solo desde el dominio de tu frontend
+app.use(cors({
+  origin: 'https://pre-sondeo-tecamac-2025.netlify.app', // Asegúrate de usar tu URL de frontend aquí
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
+}));
 app.use(express.json());
 
 // Ruta para guardar los datos
