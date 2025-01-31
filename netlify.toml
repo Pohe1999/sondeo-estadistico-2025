@@ -1,9 +1,0 @@
-[build]
-  functions = "functions"
-  publish = "build" # Si tienes una carpeta build para tu frontend
-
-[functions]
-<<<<<<< HEAD
-  directory = "functions"
-=======
-  directory = "functions"
