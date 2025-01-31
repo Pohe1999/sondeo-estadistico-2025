@@ -4,9 +4,10 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5001;
+const PORT = 5001;
 
-const mongoURI = process.env.MONGODB_URI;
+// Conexión a MongoDB Atlas (¡URL expuesta, NO RECOMENDADO PARA PRODUCCIÓN!)
+const mongoURI = 'mongodb+srv://mapogu99:dalila25C@sondeostecamac1.bgs4s.mongodb.net/?retryWrites=true&w=majority'; // ¡REEMPLAZA <db_password> CON TU CONTRASEÑA REAL!
 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
@@ -49,6 +50,7 @@ const Sondeo = mongoose.model('sondeos', sondeoSchema);
 app.use(cors());
 app.use(express.json());
 
+// Ruta para guardar los datos
 app.post('/api/sondeos', async (req, res) => {
   try {
     const nuevoSondeo = new Sondeo(req.body);
@@ -60,38 +62,6 @@ app.post('/api/sondeos', async (req, res) => {
   }
 });
 
-// Adaptación para Netlify Functions
-exports.handler = async (event, context) => {
-  return new Promise((resolve, reject) => {
-    const server = app.listen(0, () => {
-      const port = server.address().port;
-      console.log(`Servidor escuchando en el puerto ${port}`);
-
-      const req = {
-        ...event,
-        path: event.path.replace('/.netlify/functions/server', ''), // Ajusta la ruta
-        body: event.body,
-        method: event.httpMethod,
-      };
-
-      const res = {
-        status: (code) => {
-          return {
-            json: (data) => {
-              resolve({
-                statusCode: code,
-                body: JSON.stringify(data),
-              });
-            },
-          };
-        },
-      };
-
-      app(req, res, (err) => {
-        if (err) {
-          reject(err);
-        }
-      });
-    });
-  });
-};
+app.listen(PORT, () => {
+  console.log(`Servidor escuchando en el puerto ${PORT}`);
+});
