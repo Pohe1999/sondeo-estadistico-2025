@@ -585,7 +585,7 @@ const PreSondeoEstadistico = () => {
           <div className="text-center">
           <button
               type="submit"
-              className="bg-red-900 text-white px-6 py-2 rounded-lg font-bold hover:bg-red-700 flex items-center justify-center gap-2"
+              className="bg-red-900 text-white px-8 py-6 rounded-lg font-bold hover:bg-red-700 flex items-center justify-center gap-2"
               disabled={loading} // ⬅️ Deshabilitar botón mientras carga
             >
               {loading && (
