@@ -126,7 +126,7 @@ const PreSondeoEstadistico = () => {
                     options={[
                       { value: "Masculino", label: "Masculino" },
                       { value: "Femenino", label: "Femenino" },
-                      { value: "Ninguno", label: "Ninguno" },
+                      { value: "Otro", label: "Otro" },
                     ]}
                   />
                 )}
@@ -137,7 +137,7 @@ const PreSondeoEstadistico = () => {
               <label className="block text-gray-700 mb-2">Edad:</label>
               <input
                 type="number"
-                {...register("edad", { required: true, min: 1, max: 99 })}
+                {...register("edad", { required: true, min: 17, max: 99 })}
                 className="w-full border border-gray-300 rounded-lg p-2"
               />
               {errors.edad && <p className="text-red-600">Este campo es obligatorio.</p>}
