@@ -14,7 +14,10 @@ const PreSondeoEstadistico = () => {
     formState: { errors },
   } = useForm();
 
+  const [loading, setLoading] = useState(false); // Estado para el spinner
+
   const onSubmit = async (data) => {
+    setLoading(true); // Activar spinner antes de enviar
     try {
       const dataToSend = Object.keys(data).reduce((acc, key) => {
         if (typeof data[key] === 'object' && data[key] !== null && data[key].hasOwnProperty('value')) {
@@ -55,6 +58,8 @@ const PreSondeoEstadistico = () => {
       toast.error("Error al conectar con el servidor.", {
         style: { backgroundColor: "#b91c1c", color: "#fff" },
       });
+    } finally {
+      setLoading(false); // ⬅️ Desactivar spinner después de la respuesta
     }
   };
   
@@ -577,11 +582,34 @@ const PreSondeoEstadistico = () => {
 
           {/* Botón de enviar */}
           <div className="text-center">
-            <button
+          <button
               type="submit"
-              className="bg-red-900 text-white py-2 px-6 rounded-lg font-semibold"
+              className="bg-red-900 text-white px-6 py-2 rounded-lg font-bold hover:bg-red-700 flex items-center justify-center gap-2"
+              disabled={loading} // ⬅️ Deshabilitar botón mientras carga
             >
-              Enviar
+              {loading && (
+                <svg
+                  className="animate-spin h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8H4z"
+                  ></path>
+                </svg>
+              )}
+              {loading ? "Enviando..." : "Enviar"}
             </button>
           </div>
         </form>
