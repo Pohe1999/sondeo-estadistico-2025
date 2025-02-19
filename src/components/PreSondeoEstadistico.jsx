@@ -13,7 +13,6 @@ const PreSondeoEstadistico = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const obraPublicaSeleccionada = watch("obraPublicaInfluyente");
 
 
   const [loading, setLoading] = useState(false); // ⬅️ Estado para el spinner
