@@ -21,7 +21,7 @@ mongoose.connect(mongoURI, {
 const sondeoSchema = new mongoose.Schema({
   seccionElectoral: String,
   sexo: String,
-  edad: Number,
+  edad: String,
   escolaridad: String,
   conoceLaSeccion: String,
   votaDondeVive: String,
