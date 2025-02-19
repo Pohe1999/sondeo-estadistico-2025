@@ -75,7 +75,7 @@ const Sondeo = mongoose.model('sondeos', sondeoSchema);
 
 // Permitir solicitudes solo desde el dominio de tu frontend
 app.use(cors({
-  origin: 'https://pre-sondeo-tecamac-2025.netlify.app', // Asegúrate de usar tu URL de frontend aquí
+  origin: 'https://pre-sondeo-tecamac-2025-mpg.netlify.app', // Asegúrate de usar tu URL de frontend aquí
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
 }));
