@@ -123,12 +123,12 @@ const PreSondeoEstadistico = () => {
                   <Select
                     {...field}
                     options={[
-                      { value: "a", label: "18-25 años" },
-                      { value: "b", label: "26-35 años" },
-                      { value: "c", label: "31-35 años" },
-                      { value: "d", label: "36-45 años" },
-                      { value: "e", label: "46-55 años" },
-                      { value: "f", label: "56-65 años" }
+                      { value: "18-25", label: "18-25 años" },
+                      { value: "26-35", label: "26-35 años" },
+                      { value: "31-35", label: "31-35 años" },
+                      { value: "36-45", label: "36-45 años" },
+                      { value: "46-55", label: "46-55 años" },
+                      { value: "56-65", label: "56-65 años" }
                     ]}
                   />
                 )}
@@ -448,6 +448,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="participacionSeguridad"
                 control={control}
+                rules={{ required: true }}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -459,6 +460,9 @@ const PreSondeoEstadistico = () => {
                   />
                 )}
               />
+              {errors.participacionSeguridad && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
             </div>
           </div>
 
@@ -474,6 +478,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="conoceBeneficiosImpuestos"
                 control={control}
+                rules={{ required: true }}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -484,6 +489,9 @@ const PreSondeoEstadistico = () => {
                   />
                 )}
               />
+              {errors.conoceBeneficiosImpuestos && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
@@ -492,6 +500,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="conoceCampanasDescuentos"
                 control={control}
+                rules={{required: true}}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -502,6 +511,9 @@ const PreSondeoEstadistico = () => {
                   />
                 )}
               />
+              {errors.conoceCampanasDescuentos && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
             </div>
           </div>
           {/* Sección 6: Obra Pública y Ciudadanía */}
@@ -516,6 +528,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="obraPublicaInfluyente"
                 control={control}
+                rules={{required: true}}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -526,6 +539,9 @@ const PreSondeoEstadistico = () => {
                   />
                 )}
               />
+              {errors.obraPublicaInfluyente && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
             </div>
             {watch("obraPublicaInfluyente") === "Sí" && (
               <div className="mb-4">
@@ -545,6 +561,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="vialidades"
                 control={control}
+                rules={{required: true}}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -555,6 +572,9 @@ const PreSondeoEstadistico = () => {
                   />
                 )}
               />
+              {errors.vialidades && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
             </div>
             {watch("vialidades") === "No" && (
               <div className="mb-4">
@@ -574,6 +594,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="espaciosSinLuminarias"
                 control={control}
+                rules={{required: true}}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -584,6 +605,9 @@ const PreSondeoEstadistico = () => {
                   />
                 )}
               />
+              {errors.espaciosSinLuminarias && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
             </div>
             {watch("espaciosSinLuminarias") === "Si" && (
               <div className="mb-4">
@@ -609,6 +633,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="recoleccionBasura"
                 control={control}
+                rules={{required: true}}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -619,6 +644,9 @@ const PreSondeoEstadistico = () => {
                   />
                 )}
               />
+              {errors.recoleccionBasura && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
@@ -627,6 +655,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="mercadosMunicipales"
                 control={control}
+                rules={{required: true}}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -637,6 +666,9 @@ const PreSondeoEstadistico = () => {
                   />
                 )}
               />
+              {errors.mercadosMunicipales && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
             </div>
           </div>
             <div className="mb-4">
@@ -646,6 +678,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="calificacionAgua"
                 control={control}
+                rules={{required: true}}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -657,6 +690,9 @@ const PreSondeoEstadistico = () => {
                   />
                 )}
               />
+              {errors.calificacionAgua && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
             </div>
           {/* Sección 8: Cultura */}
           <div className="mb-8 border-t-2 border-red-900">
@@ -671,6 +707,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="muestrasCulturales"
                 control={control}
+                rules={{required: true}}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -681,6 +718,9 @@ const PreSondeoEstadistico = () => {
                   />
                 )}
               />
+              {errors.muestrasCulturales && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
             </div>
           </div>
 
@@ -696,6 +736,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="eventosDeportivos"
                 control={control}
+                rules={{required: true}}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -706,6 +747,9 @@ const PreSondeoEstadistico = () => {
                   />
                 )}
               />
+              {errors.eventosDeportivos && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
             </div>
           </div>
 
@@ -721,6 +765,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="puertaVioleta"
                 control={control}
+                rules={{required: true}}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -731,6 +776,9 @@ const PreSondeoEstadistico = () => {
                   />
                 )}
               />
+              {errors.puertaVioleta && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
             </div>
           </div>
 
