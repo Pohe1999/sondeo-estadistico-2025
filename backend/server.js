@@ -42,7 +42,7 @@ const sondeoSchema = new mongoose.Schema({
   conoceObraPublica: Boolean,
   conoceObraPublicaCual: String,
   VialidadesEnBuenEstado: Boolean,
-  conoceObraPublicaCual: String,
+  VialidadesEnMalEstadoCual: String,
   alumbradoPublico: String,
   recoleccionBasura: String,
   mercadosMunicipales: String,

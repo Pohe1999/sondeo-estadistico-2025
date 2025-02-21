@@ -458,7 +458,6 @@ const PreSondeoEstadistico = () => {
               </label>
               <Controller
                 name="recibirInfoDeMG"
-                rules={{required: true}}
                 control={control}
                 render={({ field }) => (
                   <div className="flex items-center gap-4">
@@ -477,7 +476,6 @@ const PreSondeoEstadistico = () => {
                 ¿Sabía usted que Mariela Gutiérrez Escalante se consideró la mejor presidenta municipal del país?              </label>
               <Controller
                 name="mejorPresidentaMG"
-                rules={{required: true}}
                 control={control}
                 render={({ field }) => (
                   <div className="flex items-center gap-4">
@@ -671,9 +669,9 @@ const PreSondeoEstadistico = () => {
             )}
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
-                Respecto a las vialidades que utiliza diariamente ¿Considera que se encuentran en buenas condiciones? (pavimentadas o bacheo)</label>
+                Respecto a las vialidades que utiliza diariamente ¿Considera que se encuentran en malas condiciones? (pavimentadas o bacheo)</label>
               <Controller
-                name="VialidadesEnBuenEstado"
+                name="VialidadesEnMalEstado"
                 control={control}
                 render={({ field }) => (
                   <div className="flex items-center gap-4">
@@ -687,13 +685,13 @@ const PreSondeoEstadistico = () => {
                 )}
               />
             </div>
-            {watch("VialidadesEnBuenEstado") && (
+            {watch("VialidadesEnMalEstado") && (
               <div>
               <div className="mb-4">
               <label className="block text-gray-700 mb-2">¿Puedes decirnos Cuál?</label>
               <input
                   type="text"
-                  {...register("conoceObraPublicaCual")}
+                  {...register("VialidadesEnMalEstadoCual")}
                   className="w-full border border-gray-300 rounded-lg p-2"
                 />
               {errors.conoceObraPublica && (
