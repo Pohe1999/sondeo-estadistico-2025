@@ -390,7 +390,7 @@ const PreSondeoEstadistico = () => {
               )}
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700 mb-2">¿De las siguientes actividades, cuales considera que sean las principales funciones de una senadora o senador de la República?</label>
+              <label className="block text-gray-700 mb-2">¿Conoce o ha escuchado a la Senadora Mariela Gutiérrez Escalante?</label>
               <label className="text-gray-800 text-sm italic">Califica del 1 al 10, donde 1 no la conozco y 10 la conozco mucho</label>
               <Controller
                 name="conocimientoMG"
@@ -888,7 +888,7 @@ const PreSondeoEstadistico = () => {
                 ¿Cómo calificaría el desempeño de la Gobernadora Delfina Gómez Álvarez, en el Estado de México?              
               </label>
               <Controller
-                name="gobiernoClaudia"
+                name="gobiernoDelfina"
                 control={control}
                 rules={{required: true}}
                 render={({ field }) => (
@@ -903,7 +903,7 @@ const PreSondeoEstadistico = () => {
                   />
                 )}
               />
-              {errors.gobiernoClaudia && (
+              {errors.gobiernoDelfina && (
                 <p className="text-red-600">Este campo es obligatorio.</p>
               )}
             </div>
