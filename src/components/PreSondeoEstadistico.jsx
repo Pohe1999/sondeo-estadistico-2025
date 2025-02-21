@@ -5,6 +5,8 @@ import Select from "react-select";
 import Switch from "react-switch";
 import { secciones } from './secciones';
 
+
+{/* Sondeo de Estado de mexico */}
 const PreSondeoEstadistico = () => {
   const {
     control,
@@ -75,11 +77,11 @@ const PreSondeoEstadistico = () => {
     >
       <div className="bg-white max-w-3xl mx-auto p-6 rounded-lg shadow-lg shadow-gray-600">
         <h1 className="text-2xl font-bold text-red-900 mb-6 text-center border-b-2">
-          PRE-SONDEO ESTADÍSTICO
+          PRE-SONDEO ESTADÍSTICO ESTADO DE MEXICO
         </h1>
         <p className="text-gray-700 mb-4 text-justify">
           Este sondeo tiene como objetivo recabar información valiosa para
-          mejorar los servicios públicos y las políticas de gobierno. Tus
+          mejorar los servicios públicos y las políticas de gobierno Del estado de mexico. Tus
           respuestas ayudarán a crear un futuro más inclusivo y eficaz para todos
           los ciudadanos.
         </p>
@@ -89,7 +91,7 @@ const PreSondeoEstadistico = () => {
         </p>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          {/* Sección 1: Datos Personales */}
+          {/* Sección 1: Datos de segmentacion */}
           <div className="mb-8 border-t-2 border-red-900">
             <h2 className="text-xl font-semibold text-red-900 mb-4">
               1. Datos De segmentacion
@@ -149,6 +151,7 @@ const PreSondeoEstadistico = () => {
                       { value: "Secundaria", label: "Secundaria" },
                       { value: "Preparatoria", label: "Preparatoria" },
                       { value: "Licenciatura", label: "Licenciatura" },
+                      { value: "maestria", label: "Maestria" },
                       { value: "Posgrado", label: "Posgrado" },
                     ]}
                   />
@@ -228,9 +231,9 @@ const PreSondeoEstadistico = () => {
               )}
             </div>
             <div className="mb-4">
-              <label className="block text-gray-700 mb-2">¿Votaste en el pasado proceso electoral para elegir Presidente Municipal de Tecámac?</label>
+              <label className="block text-gray-700 mb-2">¿En su opinión se considera un votante habitual?</label>
               <Controller
-                name="VotoParaPresidencia"
+                name="votanteRegular"
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
@@ -244,18 +247,250 @@ const PreSondeoEstadistico = () => {
                   />
                 )}
               />
+              {errors.votanteRegular && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">¿Votó en el pasado proceso electoral 2024?</label>
+              <Controller
+                name="VotoParaPresidencia"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={[
+                      { value: "si", label: "Si" },
+                      { value: "no", label: "No" },
+                      { value: "no contesto", label: "No contesto" },
+                    ]}
+                  />
+                )}
+              />
               {errors.VotoParaPresidencia && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">¿Por cuál partido político votó para Presidente Municipal en el 2024?</label>
+              <Controller
+                name="votoMunicipal"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={[
+                      { value: "pan", label: "PAN" },
+                      { value: "pri", label: "PRI" },
+                      { value: "prd", label: "PRD" },
+                      { value: "pvem", label: "PVEM" },
+                      { value: "morena", label: "MORENA" },
+                      { value: "mc", label: "MC" },
+                      { value: "otro", label: "OTRO" }
+                    ]}
+                  />
+                )}
+              />
+              {errors.votoMunicipal && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">¿Por cuál partido político votó para Diputado federal en el 2024?</label>
+              <Controller
+                name="votoFederal"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={[
+                      { value: "pan", label: "PAN" },
+                      { value: "pri", label: "PRI" },
+                      { value: "prd", label: "PRD" },
+                      { value: "pvem", label: "PVEM" },
+                      { value: "morena", label: "MORENA" },
+                      { value: "mc", label: "MC" },
+                      { value: "otro", label: "OTRO" }
+                    ]}
+                  />
+                )}
+              />
+              {errors.votoFederal && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">¿Por cuál partido político votó para Senadores en el 2024?</label>
+              <Controller
+                name="votoSenador"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={[
+                      { value: "pan", label: "PAN" },
+                      { value: "pri", label: "PRI" },
+                      { value: "prd", label: "PRD" },
+                      { value: "pvem", label: "PVEM" },
+                      { value: "morena", label: "MORENA" },
+                      { value: "mc", label: "MC" },
+                      { value: "otro", label: "OTRO" }
+                    ]}
+                  />
+                )}
+              />
+              {errors.votoSenador && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">¿Qué tan satisfecho esta con el resultado de su voto?</label>
+              <Controller
+                name="satisfaccionVoto"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={[
+                      { value: "muySatisfecho", label: "Muy satisfecho" },
+                      { value: "pocoSatisfecho", label: "Poco satisfecho" },
+                      { value: "nadaSatisfecho", label: "Nada satisfecho" },
+                    ]}
+                  />
+                )}
+              />
+              {errors.satisfaccionVoto && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">¿De las siguientes actividades, cuales considera que sean las principales funciones de una senadora o senador de la República?</label>
+              <Controller
+                name="funcionesDelSenador"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={[
+                      { value: "Impulsar leyes en beneficio de los habitantes del Estado de México", label: "Impulsar leyes en beneficio de los habitantes del Estado de México" },
+                      { value: "Gestionar apoyos sociales y obras para el Estado y sus municipios", label: "Gestionar apoyos sociales y obras para el Estado y sus municipios" },
+                      { value: "noSabe", label: "No sabe / No contesto" }
+                    ]}
+                  />
+                )}
+              />
+              {errors.funcionesDelSenador && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">¿De las siguientes actividades, cuales considera que sean las principales funciones de una senadora o senador de la República?</label>
+              <label className="text-gray-800 text-sm italic">Califica del 1 al 10, donde 1 no la conozco y 10 la conozco mucho</label>
+              <Controller
+                name="conocimientoMG"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={[
+                      { value: "1", label: "1" },
+                      { value: "2", label: "2" },
+                      { value: "3", label: "3" },
+                      { value: "4", label: "4" },
+                      { value: "5", label: "5" },
+                      { value: "6", label: "6" },
+                      { value: "7", label: "7" },
+                      { value: "8", label: "8" },
+                      { value: "9", label: "9" },
+                      { value: "10", label: "10" }
+                    ]}
+                  />
+                )}
+              />
+              {errors.funcionesDelSenador && (
                 <p className="text-red-600">Este campo es obligatorio.</p>
               )}
             </div>
           </div>
           
-
-          {/* Sección 3: Desarrollo Social */}
+          {/* Sección: Posicionamiento MG */}
           <div className="mb-8 border-t-2 border-red-900">
             <h2 className="text-xl font-semibold text-red-900 mb-4">
-              3. Desarrollo Social
+              3. Posicionamiento MG
             </h2>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">¿A través de que medio o red social ha escuchado de la Senadora Mariela Gutiérrez Escalante?</label>
+              <Controller
+                name="medioDeConocimientoMG"
+                control={control}
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={[
+                      { value: "radio", label: "Radio" },
+                      { value: "television", label: "Televisión" },
+                      { value: "facebook", label: "Facebook" },
+                      { value: "x(antes twitter)", label: "X (antes Twitter)" },
+                      { value: "tiktok", label: "Tik Tok" },
+                      { value: "instagram", label: "Instagram" },
+                      { value: "whatsapp", label: "Whats App" },
+                      { value: "ninguno", label: "Ninguno" },
+                      { value: "no sabe", label: "No sabe" }
+                    ]}
+                  />
+                )}
+              />
+              {errors.medioDeConocimientoMG && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">
+                ¿Le gustaría recibir información de las actividades de la Senadora Mariela Gutiérrez Escalante?
+              </label>
+              <Controller
+                name="recibirInfoDeMG"
+                rules={{required: true}}
+                control={control}
+                render={({ field }) => (
+                  <div className="flex items-center gap-4">
+                    <Switch
+                      onChange={field.onChange}
+                      checked={field.value}
+                      onColor="#b91c1c"
+                    />
+                    <span>{field.value ? "Sí" : "No"}</span>
+                  </div>
+                )}
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">
+                ¿Sabía usted que Mariela Gutiérrez Escalante se consideró la mejor presidenta municipal del país?              </label>
+              <Controller
+                name="mejorPresidentaMG"
+                rules={{required: true}}
+                control={control}
+                render={({ field }) => (
+                  <div className="flex items-center gap-4">
+                    <Switch
+                      onChange={field.onChange}
+                      checked={field.value}
+                      onColor="#b91c1c"
+                    />
+                    <span>{field.value ? "Sí" : "No"}</span>
+                  </div>
+                )}
+              />
+            </div>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
                 ¿Usted es beneficiario de algún programa social?
@@ -275,162 +510,40 @@ const PreSondeoEstadistico = () => {
                 )}
               />
             </div>
-            {watch("beneficiario") && (
-              <div>
-              <div className="mb-4">
-              <label className="block text-gray-700 mb-2">¿Cuál es la instancia de gobierno de la cual recibe su apoyo?</label>
-              <Controller
-                name="instanciaDelBeneficio"
-                control={control}
-                rules={{ required: true }}
-                render={({ field }) => (
-                  <Select
-                    {...field}
-                    options={[
-                      { value: "municipal", label: "Municipal" },
-                      { value: "estatal", label: "Estatal" },
-                      { value: "federal", label: "Federal" },
-                    ]}
-                  />
-                )}
-              />
-              {errors.instanciaDelBeneficio && (
-                <p className="text-red-600">Este campo es obligatorio.</p>
-              )}
-            </div>
-            <div className="mb-4">
-              <label className="block text-gray-700 mb-2">¿Qué tan satisfecho esta con el apoyo que recibe?</label>
-              <Controller
-                name="satisfaccionDelBeneficio"
-                control={control}
-                rules={{ required: true }}
-                render={({ field }) => (
-                  <Select
-                    {...field}
-                    options={[
-                      { value: "muySatisfecho", label: "Muy satisfecho" },
-                      { value: "pocoSatisfecho", label: "Poco satisfecho" },
-                      { value: "nadaSatisfecho", label: "Nada satisfecho" },
-                    ]}
-                  />
-                )}
-              />
-              {errors.satisfaccionDelBeneficio && (
-                <p className="text-red-600">Este campo es obligatorio.</p>
-              )}
-            </div>
-            </div>
-            )}
           </div>
 
-          {/* Sección 4: Seguridad Pública */}
+          {/* Sección: Deteccion de problematicas */}
           <div className="mb-8 border-t-2 border-red-900">
             <h2 className="text-xl font-semibold text-red-900 mb-4">
-              4. Percepción de la Seguridad Pública
+              Detección de Problemáticas
             </h2>
-            <h3 className="block text-gray-700 mb-2">
-              En términos de delincuencia, ¿se siente seguro o inseguro?
-            </h3>
-            {[
-              { name: "casa", label: "Su casa" },
-              { name: "trabajo", label: "Su trabajo" },
-              { name: "calle", label: "La calle" },
-              { name: "escuela", label: "La escuela" },
-              { name: "mercado", label: "El mercado" },
-              { name: "centro_comercial", label: "El centro comercial" },
-              { name: "banco", label: "El banco" },
-              { name: "cajero", label: "El cajero automático en vía pública" },
-              { name: "transporte", label: "El transporte público" },
-              { name: "automovil", label: "El automóvil" },
-              { name: "parque", label: "Parque o centro recreativo" },
-            ].map((item) => (
-              <div key={item.name} className="mb-4">
-                <label className="block text-gray-700 mb-2 border-b border-red-900">{item.label}:</label>
-                <Controller
-                  name={item.name}
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field }) => (
-                    <Select
-                      {...field}
-                      options={[
-                        { value: "seguro", label: "Seguro (a)" },
-                        { value: "inseguro", label: "Inseguro (a)" },
-                        { value: "noAplica", label: "No aplica" },
-                        { value: "noSabeNoContesto", label: "No contestó / No sabe" },
-                      ]}
-                    />
-                  )}
-                />
-                {errors[item.name] && (
-                  <p className="text-red-600">Este campo es obligatorio.</p>
-                )}
-              </div>
-            ))}
-            <h3 className="block text-gray-700 mb-2">
-            ¿Sabe usted o ha escuchado si en los alrededores de su vivienda suceden
-            o se dan las siguientes situaciones?
-            </h3>
-            {[
-              { name: "consumoAlcohol", label: "Consumo de alcohol en la calle" },
-              { name: "pandillas", label: "Pandillas y bandas violentas" },
-              { name: "ventaIlegalAlcohol", label: "Existe venta ilegal de alcohol" },
-              { name: "ventaPirateria", label: "Se venden productos piratas" },
-              { name: "invasionPredios", label: "Hay invasión de predios o casas" },
-              { name: "robosFrecuentes", label: "Existen robos o asaltos frecuentes" },
-              { name: "ventaDroga", label: "Se vende droga" },
-              { name: "disparosFrecuentes", label: "Ha habido disparos frecuentes" },
-              { name: "secuestros", label: "Ha habido secuestros" },
-              { name: "homicidios", label: "Ha habido homicidios" },
-            ].map((item) => (
-              <div key={item.name} className="mb-4">
-                <label className="block text-gray-700 mb-2 border-b border-red-900">{item.label}:</label>
-                <Controller
-                  name={item.name}
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field }) => (
-                    <Select
-                      {...field}
-                      options={[
-                        { value: "si", label: "Sí" },
-                        { value: "no", label: "No" },
-                        { value: "noSabeNoContesto", label: "No contestó / No sabe" },
-                      ]}
-                    />
-                  )}
-                />
-                {errors[item.name] && (
-                  <p className="text-red-600">Este campo es obligatorio.</p>
-                )}
-              </div>
-            ))}
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
-                ¿Qué acciones usted cree que podrían mejorar la seguridad?
+                En su opinión ¿Cuál es principal problema en su vida cotidiana?
               </label>
               <Controller
-                name="accionesSeguridad"
+                name="problemaCotidiano"
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
                   <Select
                     {...field}
                     options={[
-                      { value: "Mejor iluminacion", label: "Mejor iluminación en calles y avenidas" },
-                      { value: "Videovigilancia", label: "Video-vigilancia con cámaras de seguridad" },
-                      { value: "Presencia policia", label: "Mayor presencia policial" },
-                      { value: "Mantenimiento", label: "Limpieza y mantenimiento de espacios públicos" },
-                      { value: "Participacion", label: "Mayor participación ciudadana en coordinación con las autoridades de gobierno" },
+                      { value: "educacion", label: "Educación" },
+                      { value: "empleo", label: "Empleo" },
+                      { value: "economia familiar", label: "Economía familiar" },
+                      { value: "seguridad", label: "Seguridad" },
+                      { value: "movilidad", label: "Movilidad" },
+                      { value: "salul", label: "Salud" },
+                      { value: "otro", label: "Mayor participación ciudadana en coordinación con las autoridades de gobierno" }
                     ]}
                   />
                 )}
               />
-              {errors.accionesSeguridad && (
+              {errors.problemaCotidiano && (
                 <p className="text-red-600">Este campo es obligatorio.</p>
               )}
             </div>
-
             {/* Aquí agregamos un input para el campo "Otro" debajo de las opciones */}
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">Otro</label>
@@ -440,27 +553,27 @@ const PreSondeoEstadistico = () => {
                 className="w-full border border-gray-300 rounded-lg p-2"
               />
             </div>
-
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
-                ¿Estaría dispuesto(a) a participar en actividades para mejorar la seguridad?
+                ¿Qué nivel de gobierno considera que se ocupa más en atender las necesidades de su comunidad?
               </label>
               <Controller
-                name="participacionSeguridad"
+                name="gobiernoEngargadoDeAtender"
                 control={control}
                 rules={{ required: true }}
                 render={({ field }) => (
                   <Select
                     {...field}
                     options={[
-                      { value: "Si", label: "Sí" },
-                      { value: "No", label: "No" },
-                      { value: "Tal vez", label: "Tal vez" },
+                      { value: "municipal", label: "Municipal" },
+                      { value: "estatal", label: "Estatal" },
+                      { value: "federal", label: "Federal" },
+                      { value: "ninguno", label: "Ninguno" }
                     ]}
                   />
                 )}
               />
-              {errors.participacionSeguridad && (
+              {errors.gobiernoEngargadoDeAtender && (
                 <p className="text-red-600">Este campo es obligatorio.</p>
               )}
             </div>
@@ -516,112 +629,107 @@ const PreSondeoEstadistico = () => {
               )}
             </div>
           </div>
-          {/* Sección 6: Obra Pública y Ciudadanía */}
+
+          {/* Sección: Obra Pública y Ciudadanía */}
           <div className="mb-8 border-t-2 border-red-900">
             <h2 className="text-xl font-semibold text-red-900 mb-4">
-              6. Obra Pública y Ciudadanía
+              Obra Pública y Ciudadanía
             </h2>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
-                ¿Conoce alguna obra pública que haya influido significativamente en su calidad de vida?
+              ¿Conoce alguna obra pública en su comunidad o municipio que haya influido significativamente en su calidad de vida?
               </label>
               <Controller
-                name="obraPublicaInfluyente"
+                name="conoceObraPublica"
                 control={control}
-                rules={{required: true}}
                 render={({ field }) => (
-                  <Select
-                    {...field}
-                    options={[
-                      { value: "si", label: "Sí" },
-                      { value: "no", label: "No" },
-                    ]}
-                  />
+                  <div className="flex items-center gap-4">
+                    <Switch
+                      onChange={field.onChange}
+                      checked={field.value}
+                      onColor="#b91c1c"
+                    />
+                    <span>{field.value ? "Sí" : "No"}</span>
+                  </div>
                 )}
               />
-              {errors.obraPublicaInfluyente && (
+            </div>
+            {watch("conoceObraPublica") && (
+              <div>
+              <div className="mb-4">
+              <label className="block text-gray-700 mb-2">¿Cuál?</label>
+              <input
+                  type="text"
+                  {...register("conoceObraPublicaCual")}
+                  className="w-full border border-gray-300 rounded-lg p-2"
+                />
+              {errors.conoceObraPublica && (
                 <p className="text-red-600">Este campo es obligatorio.</p>
               )}
             </div>
-            {watch("obraPublicaInfluyente") === "Sí" && (
-              <div className="mb-4">
-                <label className="block text-gray-700 mb-2">¿Cuál?</label>
-                <input
-                  type="text"
-                  {...register("obraPublica")}
-                  className="w-full border border-gray-300 rounded-lg p-2"
-                />
-              </div>
+            </div>
             )}
-
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
-                Respecto a las vialidades que utilizas diariamente, ¿consideras que se encuentran en buenas condiciones(pavimentadas o bacheo)?
-              </label>
+                Respecto a las vialidades que utiliza diariamente ¿Considera que se encuentran en buenas condiciones? (pavimentadas o bacheo)</label>
               <Controller
-                name="vialidades"
+                name="VialidadesEnBuenEstado"
                 control={control}
-                rules={{required: true}}
                 render={({ field }) => (
-                  <Select
-                    {...field}
-                    options={[
-                      { value: "Si", label: "Sí" },
-                      { value: "No", label: "No" },
-                    ]}
-                  />
+                  <div className="flex items-center gap-4">
+                    <Switch
+                      onChange={field.onChange}
+                      checked={field.value}
+                      onColor="#b91c1c"
+                    />
+                    <span>{field.value ? "Sí" : "No"}</span>
+                  </div>
                 )}
               />
-              {errors.vialidades && (
+            </div>
+            {watch("VialidadesEnBuenEstado") && (
+              <div>
+              <div className="mb-4">
+              <label className="block text-gray-700 mb-2">¿Puedes decirnos Cuál?</label>
+              <input
+                  type="text"
+                  {...register("conoceObraPublicaCual")}
+                  className="w-full border border-gray-300 rounded-lg p-2"
+                />
+              {errors.conoceObraPublica && (
                 <p className="text-red-600">Este campo es obligatorio.</p>
               )}
             </div>
-            {watch("vialidades") === "No" && (
-              <div className="mb-4">
-                <label className="block text-gray-700 mb-2">¿Cuál?</label>
-                <input
-                  type="text"
-                  {...register("vialidadesComentario")}
-                  className="w-full border border-gray-300 rounded-lg p-2"
-                />
-              </div>
+            </div>
             )}
-
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
-                En tu colonia, ¿hay espacios que no cuenten con luminarias?
+                ¿Cómo calificarías, el nivel de alumbrado público en tu colonia?
               </label>
               <Controller
-                name="espaciosSinLuminarias"
+                name="alumbradoPublico"
                 control={control}
                 rules={{required: true}}
                 render={({ field }) => (
                   <Select
                     {...field}
                     options={[
-                      { value: "Si", label: "Sí" },
-                      { value: "No", label: "No" },
+                      { value: "bueno", label: "Bueno" },
+                      { value: "regular", label: "Regular" },
+                      { value: "malo", label: "Malo" },
+                      { value: "no sabe", label: "No sabe / No contesto" },
+
                     ]}
                   />
                 )}
               />
-              {errors.espaciosSinLuminarias && (
+              {errors.alumbradoPublico && (
                 <p className="text-red-600">Este campo es obligatorio.</p>
               )}
             </div>
-            {watch("espaciosSinLuminarias") === "Si" && (
-              <div className="mb-4">
-                <label className="block text-gray-700 mb-2">¿Cuáles?</label>
-                <input
-                  type="text"
-                  {...register("espaciosSinLuminariasComentario")}
-                  className="w-full border border-gray-300 rounded-lg p-2"
-                />
-              </div>
-            )}
           </div>
 
-          {/* Sección 7: Servicios publicos */}
+          {/* Sección: Servicios publicos */}
           <div className="mb-8 border-t-2 border-red-900">
             <h2 className="text-xl font-semibold text-red-900 mb-4">
               7. Servicios Públicos
@@ -650,7 +758,7 @@ const PreSondeoEstadistico = () => {
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
-                ¿Consideras que los mercados municipales son espacios limpios y con las medidas de higiene adecuadas?
+                ¿Los mercados municipales a los que acude son espacios limpios, que cuentan con las medidas de higiene adecuadas?
               </label>
               <Controller
                 name="mercadosMunicipales"
@@ -686,6 +794,7 @@ const PreSondeoEstadistico = () => {
                       { value: "Bueno", label: "Bueno" },
                       { value: "Regular", label: "Regular" },
                       { value: "Malo", label: "Malo" },
+                      { value: "MuyMalo", label: "Muy malo" }
                     ]}
                   />
                 )}
@@ -701,26 +810,22 @@ const PreSondeoEstadistico = () => {
             </h2>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
-              En tu colonia, ¿Existen dinámicas de actividades culturales por parte del gobierno,
-              municipal, estatal y federal?
+                ¿Existen dinámicas de actividades culturales por parte del gobierno, municipal, estatal y federal, en su colonia?
               </label>
               <Controller
                 name="muestrasCulturales"
                 control={control}
-                rules={{required: true}}
                 render={({ field }) => (
-                  <Select
-                    {...field}
-                    options={[
-                      { value: "Si", label: "Sí" },
-                      { value: "No", label: "No" },
-                    ]}
-                  />
+                  <div className="flex items-center gap-4">
+                    <Switch
+                      onChange={field.onChange}
+                      checked={field.value}
+                      onColor="#b91c1c"
+                    />
+                    <span>{field.value ? "Sí" : "No"}</span>
+                  </div>
                 )}
               />
-              {errors.muestrasCulturales && (
-                <p className="text-red-600">Este campo es obligatorio.</p>
-              )}
             </div>
           </div>
 
@@ -731,52 +836,74 @@ const PreSondeoEstadistico = () => {
             </h2>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
-                En su colonia, ¿Se organizan eventos deportivos recurrentemente?
+                ¿Existen dinámicas de actividades culturales por parte del gobierno, municipal, estatal y federal, en su colonia?
               </label>
               <Controller
                 name="eventosDeportivos"
                 control={control}
-                rules={{required: true}}
                 render={({ field }) => (
-                  <Select
-                    {...field}
-                    options={[
-                      { value: "Si", label: "Sí" },
-                      { value: "No", label: "No" },
-                    ]}
-                  />
+                  <div className="flex items-center gap-4">
+                    <Switch
+                      onChange={field.onChange}
+                      checked={field.value}
+                      onColor="#b91c1c"
+                    />
+                    <span>{field.value ? "Sí" : "No"}</span>
+                  </div>
                 )}
               />
-              {errors.eventosDeportivos && (
-                <p className="text-red-600">Este campo es obligatorio.</p>
-              )}
             </div>
           </div>
 
-          {/* Sección 10: Puerta Violeta */}
+          {/* Sección: Evaluacion del desempeño */}
           <div className="mb-8 border-t-2 border-red-900">
             <h2 className="text-xl font-semibold text-red-900 mb-4">
-              10. Puerta Violeta
+              10. Evaluacíon del desempeño
             </h2>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
-              ¿Sabía usted que en cada instalación del gobierno municipal funciona con un programa denominado “Puerta Violeta”?
-              </label>
+                ¿Cómo calificaría el inicio de gobierno de la presidenta Claudia Sheinbaum Pardo?              </label>
               <Controller
-                name="puertaVioleta"
+                name="gobiernoClaudia"
                 control={control}
                 rules={{required: true}}
                 render={({ field }) => (
                   <Select
                     {...field}
                     options={[
-                      { value: "Si", label: "Sí" },
-                      { value: "No", label: "No" },
+                      { value: "bueno", label: "Bueno" },
+                      { value: "regular", label: "Regular" },
+                      { value: "malo", label: "Malo" },
+                      { value: "noSabe", label: "No sabe / No contesto" }
                     ]}
                   />
                 )}
               />
-              {errors.puertaVioleta && (
+              {errors.gobiernoClaudia && (
+                <p className="text-red-600">Este campo es obligatorio.</p>
+              )}
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">
+                ¿Cómo calificaría el desempeño de la Gobernadora Delfina Gómez Álvarez, en el Estado de México?              
+              </label>
+              <Controller
+                name="gobiernoClaudia"
+                control={control}
+                rules={{required: true}}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={[
+                      { value: "bueno", label: "Bueno" },
+                      { value: "regular", label: "Regular" },
+                      { value: "malo", label: "Malo" },
+                      { value: "noSabe", label: "No sabe / No contesto" }
+                    ]}
+                  />
+                )}
+              />
+              {errors.gobiernoClaudia && (
                 <p className="text-red-600">Este campo es obligatorio.</p>
               )}
             </div>
