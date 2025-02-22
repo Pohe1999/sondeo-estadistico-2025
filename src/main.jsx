@@ -4,12 +4,12 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import PreSondeoDos from './components/PreSondeoDos';
-import PreSondeoTresEstado from './components/PreSondeoTresEstado';
-import PreSondeoEstadistico from './components/PreSondeoDos';
+import PreSondeoEstadistico from './components/PreSondeoEstadistico';
+
 
  ReactDOM.render(
   <BrowserRouter>
-    <PreSondeoTresEstado />
+    <PreSondeoEstadistico />
   </BrowserRouter>,
   document.getElementById('root')
 );
