@@ -80,7 +80,7 @@ const PreSondeoEstadistico = () => {
     >
       <div className="bg-white max-w-3xl mx-auto p-6 rounded-lg shadow-lg shadow-gray-600">
         <h1 className="text-2xl font-bold text-red-900 mb-6 text-center border-b-2">
-          PRE-SONDEO ESTADÍSTICO ESTADO DE MEXICO
+          PRE-SONDEO ESTADÍSTICO ESTADO DE MEXICO MPG
         </h1>
         <p className="text-gray-700 mb-4 text-justify">
           Este sondeo tiene como objetivo recabar información valiosa para
