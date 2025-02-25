@@ -104,7 +104,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="genero"
                 control={control}
-                rules={{ required: "Este campo es obligatorio" }} // Mensaje de error personalizado
+                rules={{ required: "El genero es obligatorio." }} // Mensaje de error personalizado
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -124,7 +124,7 @@ const PreSondeoEstadistico = () => {
               <label className="block text-gray-700 mb-2">Edad:</label>
               <input
                 type="number"
-                {...register("edad", { required: "Este campo es obligatorio." })}
+                {...register("edad", { required: "La edad es obligatoria." })}
                 className="w-full border border-gray-300 rounded-lg p-2"
               />
               {errors.edad && (
@@ -143,7 +143,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="seccionElectoral"
                 control={control}
-                rules={{ required: true }}
+                rules={{ required: "La seccion es obligatoria." }}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -155,7 +155,7 @@ const PreSondeoEstadistico = () => {
                 )}
               />
               {errors.seccionElectoral && (
-                <p className="text-red-600">Este campo es obligatorio.</p>
+                <p className="text-red-600 text-sm">{errors.seccionElectoral.message}</p>
               )}
             </div>
             <div className="mb-4">
@@ -163,31 +163,34 @@ const PreSondeoEstadistico = () => {
               <input
                 name="localidad"
                 type="text"
-                rules={{required: true}}
-                {...register("localidad")}
+                {...register("localidad", {required: "Localidad obligatoria."})}
                 className="w-full border border-gray-300 rounded-lg p-2"
               />
-              {errors && <p className="text-red-600">Este campo es obligatorio.</p>}
+              {errors.localidad && (
+                <p className="text-red-600 text-sm">{errors.localidad.message}</p>
+              )}
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">Calle:</label>
               <input
                 type="text"
-                rules={{required: true}}
-                {...register("calle")}
+                {...register("calle", {required: "Calle es obligatoria."})}
                 className="w-full border border-gray-300 rounded-lg p-2"
               />
-              {errors && <p className="text-red-600">Este campo es obligatorio.</p>}
-            </div>
+              {errors.calle && (
+                <p className="text-red-600 text-sm">{errors.calle.message}</p>
+              )}            
+              </div>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">No. Ext:</label>
               <input
-                rules={{required: true}}
                 type="number"
-                {...register("numExterior")}
+                {...register("numExterior", {required: "Numero exterior obligatorio."})}
                 className="w-full border border-gray-300 rounded-lg p-2"
               />
-              {errors && <p className="text-red-600">Este campo es obligatorio.</p>}
+              {errors.numExterior && (
+                <p className="text-red-600 text-sm">{errors.numExterior.message}</p>
+              )}
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">No. Int:</label>
@@ -201,18 +204,19 @@ const PreSondeoEstadistico = () => {
               <label className="block text-gray-700 mb-2">Codigo Postal:</label>
               <input
                 type="number"
-                rules={{required: true}}
-                {...register("codigoPostal")}
+                {...register("codigoPostal", {required: "Codigo postal obligatorio."})}
                 className="w-full border border-gray-300 rounded-lg p-2"
               />
-              {errors && <p className="text-red-600">Este campo es obligatorio.</p>}
-            </div>
+              {errors.codigoPostal && (
+                <p className="text-red-600 text-sm">{errors.codigoPostal.message}</p>
+              )}            
+              </div>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">Identifique tipo de Vivienda</label>
               <Controller
                 name="tipoVivienda"
                 control={control}
-                rules={{ required: true }}
+                rules={{ required: "El tipo de vivienda es obligatorio." }}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -227,26 +231,27 @@ const PreSondeoEstadistico = () => {
                 )}
               />
               {errors.tipoVivienda && (
-                <p className="text-red-600">Este campo es obligatorio.</p>
+                <p className="text-red-600 text-sm">{errors.tipoVivienda.message}</p>
               )}
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">¿Cuántas personas viven normalmente en esta vivienda, contando a niñas y niños pequeños y a las personas adultas mayores?</label>
               <label className="block text-gray-700 mb-2 text-sm italic">Registre con número</label>
               <input
-                rules={{required: true}}
                 type="number"
-                {...register("numeroDeHabitantes")}
+                {...register("numeroDeHabitantes", {required: "Campo obligatorio."})}
                 className="w-full border border-gray-300 rounded-lg p-2"
               />
-              {errors && <p className="text-red-600">Este campo es obligatorio.</p>}
+              {errors.numeroDeHabitantes && (
+                <p className="text-red-600 text-sm">{errors.numeroDeHabitantes.message}</p>
+              )}
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">¿Todas las personas que viven en esta vivienda comparten un mismo gasto para comer?</label>
               <Controller
                 name="compartenMismoGasto"
                 control={control}
-                rules={{ required: true }}
+                rules={{ required: "Campo Obligatorio." }}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -258,7 +263,7 @@ const PreSondeoEstadistico = () => {
                 )}
               />
               {errors.compartenMismoGasto && (
-                <p className="text-red-600">Este campo es obligatorio.</p>
+                <p className="text-red-600 text-sm">{errors.compartenMismoGasto.message}</p>
               )}
             </div>
           </div>
@@ -273,7 +278,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="gradoDeEstudios"
                 control={control}
-                rules={{ required: true }}
+                rules={{ required: "Campo obligatorio." }}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -291,7 +296,7 @@ const PreSondeoEstadistico = () => {
                 )}
               />
               {errors.gradoDeEstudios && (
-                <p className="text-red-600">Este campo es obligatorio.</p>
+                <p className="text-red-600 text-sm">{errors.gradoDeEstudios.message}</p>
               )}
             </div>
             <div className="mb-4">
@@ -318,25 +323,23 @@ const PreSondeoEstadistico = () => {
               <div className="mb-4">
               <label className="block text-gray-700 mb-2">Mencione a la escuela a la que asiste:</label>
               <input
-                  rules={{required: true}}
                   type="text"
-                  {...register("nombreDeLaEscuela")}
+                  {...register("nombreDeLaEscuela", {required: "Campo obligatorio."})}
                   className="w-full border border-gray-300 rounded-lg p-2"
                 />
-              {errors && (
-                <p className="text-red-600">Este campo es obligatorio.</p>
+              {errors.nombreDeLaEscuela && (
+                <p className="text-red-600 text-sm">{errors.nombreDeLaEscuela.message}</p>
               )}
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">Grado que cursa:</label>
               <input
-                  rules={{required: true}}
                   type="text"
-                  {...register("gradoQueCursa")}
+                  {...register("gradoQueCursa", {required: "Campo obligatorio."})}
                   className="w-full border border-gray-300 rounded-lg p-2"
                 />
-              {errors && (
-                <p className="text-red-600">Este campo es obligatorio.</p>
+              {errors.gradoQueCursa && (
+                <p className="text-red-600 text-sm">{errors.gradoQueCursa.message}</p>
               )}
             </div>
             </div>
@@ -364,7 +367,7 @@ const PreSondeoEstadistico = () => {
               />
             </div>
             {watch("actualmenteTrabaja") && (
-              <div>
+            <div>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">
                 ¿Cuál es su ocupación?
@@ -372,7 +375,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="ocupacionActual"
                 control={control}
-                rules={{ required: true }}
+                rules={{ required: "Campo obligatorio." }}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -386,11 +389,13 @@ const PreSondeoEstadistico = () => {
                       { value: "profesionistaInependiente", label: "Profesionista independiente" },
                       { value: "maestriaDoctorado", label: "Maestría o doctorado" }
                     ]}
+                    value={field.value || null} // Asegura que el valor se maneje correctamente
+                    onChange={(selectedOption) => field.onChange(selectedOption?.value)} // Solo guarda el valor, no el objeto entero
                   />
                 )}
               />
               {errors.ocupacionActual && (
-                <p className="text-red-600">Este campo es obligatorio.</p>
+                <p className="text-red-600 text-sm">{errors.ocupacionActual.message}</p>
               )}
             </div>
             </div>
@@ -409,7 +414,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="medioDeTransporte"
                 control={control}
-                rules={{ required: true }}
+                rules={{ required: "Campo obligatorio." }}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -421,7 +426,7 @@ const PreSondeoEstadistico = () => {
                 )}
               />
               {errors.medioDeTransporte && (
-                <p className="text-red-600">Este campo es obligatorio.</p>
+                <p className="text-red-600 text-sm">{errors.medioDeTransporte.message}</p>
               )}
             </div>
             <div className="mb-4">
@@ -431,7 +436,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="calidadDelTransportePublico"
                 control={control}
-                rules={{ required: true }}
+                rules={{ required: "Campo obligatorio." }}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -444,7 +449,7 @@ const PreSondeoEstadistico = () => {
                 )}
               />
               {errors.calidadDelTransportePublico && (
-                <p className="text-red-600">Este campo es obligatorio.</p>
+                <p className="text-red-600 text-sm">{errors.calidadDelTransportePublico.message}</p>
               )}
             </div>
             <div className="mb-4">
@@ -454,7 +459,7 @@ const PreSondeoEstadistico = () => {
               <Controller
                 name="mayorProblematicaEnMovilidad"
                 control={control}
-                rules={{ required: true }}
+                rules={{ required: "Campo obligatorio." }}
                 render={({ field }) => (
                   <Select
                     {...field}
@@ -470,7 +475,7 @@ const PreSondeoEstadistico = () => {
                 )}
               />
               {errors.mayorProblematicaEnMovilidad && (
-                <p className="text-red-600">Este campo es obligatorio.</p>
+                <p className="text-red-600 text-sm">{errors.mayorProblematicaEnMovilidad.message}</p>
               )}
             </div>
           </div>
