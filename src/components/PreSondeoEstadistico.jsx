@@ -14,7 +14,12 @@ const PreSondeoEstadistico = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      laEscuelaEstaEnTerritorioMunicipal: false,
+      actualmenteTrabaja: false // Establece el valor por defecto como false
+    },
+  })
 
 
   const [loading, setLoading] = useState(false); // ⬅️ Estado para el spinner
@@ -95,33 +100,36 @@ const PreSondeoEstadistico = () => {
               1. Datos De segmentacion
             </h2>
             <div className="mb-4">
-              <label className="block text-gray-700 mb-2">Genero:</label>
+              <label className="block text-gray-700 mb-2">Género:</label>
               <Controller
                 name="genero"
                 control={control}
-                rules={{ required: true }}
+                rules={{ required: "Este campo es obligatorio" }} // Mensaje de error personalizado
                 render={({ field }) => (
                   <Select
                     {...field}
                     options={[
                       { value: "Masculino", label: "Masculino" },
                       { value: "Femenino", label: "Femenino" },
-                      { value: "Otro", label: "Otro" }
+                      { value: "Otro", label: "Otro" },
                     ]}
                   />
                 )}
               />
-              {errors.genero && <p className="text-red-600">Este campo es obligatorio.</p>}
+              {errors.genero && (
+                <p className="text-red-600 text-sm">{errors.genero.message}</p>
+              )}
             </div>
             <div className="mb-4">
               <label className="block text-gray-700 mb-2">Edad:</label>
               <input
-                rules={{ required: true }}
                 type="number"
-                {...register("edad")}
+                {...register("edad", { required: "Este campo es obligatorio." })}
                 className="w-full border border-gray-300 rounded-lg p-2"
               />
-              {errors && <p className="text-red-600">Este campo es obligatorio.</p>}
+              {errors.edad && (
+                <p className="text-red-600 text-sm">{errors.edad.message}</p>
+              )}
             </div>
           </div>
 
