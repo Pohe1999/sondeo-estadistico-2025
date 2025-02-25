@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const { stringify } = require('postcss');
 require('dotenv').config();
 
 const app = express();
