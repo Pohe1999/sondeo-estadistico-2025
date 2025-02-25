@@ -41,7 +41,7 @@ const PreSondeoEstadistico = () => {
 
       console.log('Datos enviados al servidor:', dataToSend);
 
-      const response = await fetch('https://sondeo-estadistico-2025-back.onrender.com/api/sondeos', {
+      const response = await fetch('https://sondeo-estadistico-2025-back.onrender.com/api/sondeosEstado', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

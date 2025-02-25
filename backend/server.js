@@ -41,7 +41,7 @@ const sondeoSchema = new mongoose.Schema({
   mayorProblematicaEnMovilidad: String
 });
 
-const Sondeo = mongoose.model('sondeos', sondeoSchema);
+const Sondeo = mongoose.model('sondeosEstado', sondeoSchema);
 
 // Permitir solicitudes solo desde el dominio de tu frontend
 app.use(cors({
@@ -52,7 +52,7 @@ app.use(cors({
 app.use(express.json());
 
 // Ruta para guardar los datos
-app.post('/api/sondeos', async (req, res) => {
+app.post('/api/sondeosEstado', async (req, res) => {
   try {
     const nuevoSondeo = new Sondeo(req.body);
     await nuevoSondeo.save();
